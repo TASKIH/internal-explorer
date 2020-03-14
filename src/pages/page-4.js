@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -6,8 +6,11 @@ import SEO from "../components/seo"
 import Image from "../components/image"
 
 const FourthPage = ({location}) => {
-  localStorage.setItem(
-    'IndoorDryingPlace', location.state.IndoorDryingPlace);
+  useEffect(() => {
+    window.localStorage.setItem(
+      'IndoorDryingPlace', location.state.IndoorDryingPlace);
+  },[])
+
   return (
     <Layout>
       <SEO title="かさい　けいほう　き" />

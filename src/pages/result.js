@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -22,32 +22,44 @@ const MaruBatsu = ({isMaru, text}) => {
 };
 
 const TenthPage = ({location}) => {
-  const urlParamStr = window.location.search.substring(1);
-  let params = {};
 
-  console.log(urlParamStr);
-  //urlパラメータをオブジェクトにまとめる
-  urlParamStr.split('&').forEach( param => {
-    const temp = param.split('=')
-    //pramsオブジェクトにパラメータを追加
-    params = {
-      ...params,
-      [temp[0]]: temp[1]
-    }
+  const [state, setState] = useState({
+    UnderfloorStorage: false,
+    IndoorDryingPlace: false,
+    FireAlarm: false,
+    Candle: false,
+    Simulacrum: false,
+    Extinguisher: false,
+    Evacuation: false,
+    Food: false,
+    Breaker: false,
   });
-  console.log(params);
 
-  const state = {
-    UnderfloorStorage: params["res"][0]==="1",
-    IndoorDryingPlace: params["res"][1]==="1",
-    FireAlarm: params["res"][2]==="1",
-    Candle: params["res"][3]==="1",
-    Simulacrum: params["res"][4]==="1",
-    Extinguisher: params["res"][5]==="1",
-    Evacuation: params["res"][6]==="1",
-    Food: params["res"][7]==="1",
-    Breaker: params["res"][8]==="1",
-  };
+  useEffect(() => {
+    const urlParamStr = window.location.search.substring(1);
+    let params = {};
+    //urlパラメータをオブジェクトにまとめる
+    urlParamStr.split('&').forEach( param => {
+      const temp = param.split('=')
+      //pramsオブジェクトにパラメータを追加
+      params = {
+        ...params,
+        [temp[0]]: temp[1]
+      }
+    });
+    setState({
+      UnderfloorStorage: params["res"][0]==="1",
+      IndoorDryingPlace: params["res"][1]==="1",
+      FireAlarm: params["res"][2]==="1",
+      Candle: params["res"][3]==="1",
+      Simulacrum: params["res"][4]==="1",
+      Extinguisher: params["res"][5]==="1",
+      Evacuation: params["res"][6]==="1",
+      Food: params["res"][7]==="1",
+      Breaker: params["res"][8]==="1",
+    });
+
+  },[])
 
 
   return (

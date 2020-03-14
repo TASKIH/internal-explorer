@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -6,8 +6,10 @@ import SEO from "../components/seo"
 import Image from "../components/image"
 
 const SixthPage = ({location}) => {
-  localStorage.setItem(
-    'Candle', location.state.Candle);
+  useEffect(() => {
+    window.localStorage.setItem(
+      'Candle', location.state.Candle);
+  },[]);
   return (
     <Layout>
       <SEO title="しゅみらくら　げんしょう" />

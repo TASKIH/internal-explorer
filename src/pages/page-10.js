@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -6,8 +6,10 @@ import SEO from "../components/seo"
 import Image from "../components/image"
 
 const TenthPage = ({location}) => {
-  localStorage.setItem(
-    'Food', location.state.Food);
+  useEffect(() => {
+    window.localStorage.setItem(
+      'Food', location.state.Food);
+  },[])
   return (
     <Layout>
       <SEO title="ブレーカー" />

@@ -5,13 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, withPrefix } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
-import FlareComponent from "flare-react"
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -45,7 +44,15 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const [flare, setFlare] = useState(null);
 
+  useEffect(() => {
+    import("flare-react")
+      .then((flare) => {
+        setFlare(flare);
+      })
+      .catch((error) => console.error(error));
+  },[])
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
@@ -58,7 +65,9 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          <FlareComponent className="medjged" style={{position: `fixed`, bottom: 0, right: 0}} width={300} height={300} animationName={GetAnimation()} file={withPrefix('/medjed.flr')}/>
+          {flare && (
+            <flare className="medjged" style={{position: `fixed`, bottom: 0, right: 0}} width={300} height={300} animationName={GetAnimation()} file={withPrefix('/medjed.flr')}/>
+          )}
         </footer>
       </div>
     </>

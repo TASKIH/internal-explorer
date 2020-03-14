@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -6,8 +6,10 @@ import SEO from "../components/seo"
 import Image from "../components/image"
 
 const FivePage = ({location}) => {
-  localStorage.setItem(
-    'FireAlarm', location.state.FireAlarm);
+  useEffect(() => {
+    window.localStorage.setItem(
+      'FireAlarm', location.state.FireAlarm);
+  },[])
   return (
     <Layout>
       <SEO title="ろうそく" />

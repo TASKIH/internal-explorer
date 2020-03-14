@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -22,18 +22,24 @@ const MaruBatsu = ({isMaru, text}) => {
 };
 
 const TenthPage = ({location}) => {
-  localStorage.setItem('Breaker', location.state.Breaker);
-  const state = {
-    UnderfloorStorage: localStorage.getItem('UnderfloorStorage'),
-    IndoorDryingPlace: localStorage.getItem('IndoorDryingPlace'),
-    FireAlarm: localStorage.getItem('FireAlarm'),
-    Candle: localStorage.getItem('Candle'),
-    Simulacrum: localStorage.getItem('Simulacrum'),
-    Extinguisher: localStorage.getItem('Extinguisher'),
-    Evacuation: localStorage.getItem('Evacuation'),
-    Food: localStorage.getItem('Food'),
-    Breaker: location.state.Breaker,
-  };
+  const [state, setState] = useState(null);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      'Breaker', location.state.Breaker);
+    const tmpState = {
+      UnderfloorStorage: window.localStorage.getItem('UnderfloorStorage'),
+      IndoorDryingPlace: window.localStorage.getItem('IndoorDryingPlace'),
+      FireAlarm: window.localStorage.getItem('FireAlarm'),
+      Candle: window.localStorage.getItem('Candle'),
+      Simulacrum: window.localStorage.getItem('Simulacrum'),
+      Extinguisher: window.localStorage.getItem('Extinguisher'),
+      Evacuation: window.localStorage.getItem('Evacuation'),
+      Food: window.localStorage.getItem('Food'),
+      Breaker: location.state.Breaker,
+    };
+    setState(tmpState);
+  },[]);
   return (
     <Layout>
       <SEO title="けっか　はっぴょう" />
@@ -47,16 +53,19 @@ const TenthPage = ({location}) => {
       <p>「とうほうけんぶんろく」を　かいたみたいに</p>
       <p>きみも　たんけんの　けっかを　ふりかえろう！</p>
       <h2>きみの　とうほうけんぶんろく</h2>
-
-      <MaruBatsu isMaru={state.UnderfloorStorage} text="ゆかした　しゅうのう"/>
-      <MaruBatsu isMaru={state.IndoorDryingPlace} text="しつない　ものほし"/>
-      <MaruBatsu isMaru={state.FireAlarm} text="かさい　けいほう　き"/>
-      <MaruBatsu isMaru={state.Candle} text="ろうそく"/>
-      <MaruBatsu isMaru={state.Simulacrum} text="しゅみらくら　げんしょう"/>
-      <MaruBatsu isMaru={state.Extinguisher} text="しょうかき"/>
-      <MaruBatsu isMaru={state.Evacuation} text="ひなん　きぐ"/>
-      <MaruBatsu isMaru={state.Food} text="ひじょうしょくとほぞんすい"/>
-      <MaruBatsu isMaru={state.Breaker} text="ブレーカー"/>
+      {state && (
+        <React.Fragment>
+          <MaruBatsu isMaru={state.UnderfloorStorage} text="ゆかした　しゅうのう"/>
+          <MaruBatsu isMaru={state.IndoorDryingPlace} text="しつない　ものほし"/>
+          <MaruBatsu isMaru={state.FireAlarm} text="かさい　けいほう　き"/>
+          <MaruBatsu isMaru={state.Candle} text="ろうそく"/>
+          <MaruBatsu isMaru={state.Simulacrum} text="しゅみらくら　げんしょう"/>
+          <MaruBatsu isMaru={state.Extinguisher} text="しょうかき"/>
+          <MaruBatsu isMaru={state.Evacuation} text="ひなん　きぐ"/>
+          <MaruBatsu isMaru={state.Food} text="ひじょうしょくとほぞんすい"/>
+          <MaruBatsu isMaru={state.Breaker} text="ブレーカー"/>
+        </React.Fragment>
+      )}
       <div className="inline-block">
         <Link to="/page-12/">
           <button>みんなに　たんけんのことを　はなそう！</button>

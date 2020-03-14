@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -24,29 +24,36 @@ const MaruBatsu = ({isMaru, text}) => {
 };
 
 const TenthPage = ({location}) => {
-  const state = {
-    UnderfloorStorage: localStorage.getItem('UnderfloorStorage'),
-    IndoorDryingPlace: localStorage.getItem('IndoorDryingPlace'),
-    FireAlarm: localStorage.getItem('FireAlarm'),
-    Candle: localStorage.getItem('Candle'),
-    Simulacrum: localStorage.getItem('Simulacrum'),
-    Extinguisher: localStorage.getItem('Extinguisher'),
-    Evacuation: localStorage.getItem('Evacuation'),
-    Food: localStorage.getItem('Food'),
-    Breaker: localStorage.getItem('Breaker'),
-  };
-  const baseUrl = "http://localhost:8000/result?res=";
-  let url = baseUrl;
-  url += (state.UnderfloorStorage)? "1" : "0";
-  url += (state.UnderfloorStorage)? "1" : "0";
-  url += (state.IndoorDryingPlace)? "1" : "0";
-  url += (state.FireAlarm)? "1" : "0";
-  url += (state.Candle)? "1" : "0";
-  url += (state.Simulacrum)? "1" : "0";
-  url += (state.Extinguisher)? "1" : "0";
-  url += (state.Evacuation)? "1" : "0";
-  url += (state.Food)? "1" : "0";
-  url += (state.Breaker)? "1" : "0";
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    const state = {
+      UnderfloorStorage: window.localStorage.getItem('UnderfloorStorage'),
+      IndoorDryingPlace: window.localStorage.getItem('IndoorDryingPlace'),
+      FireAlarm: window.localStorage.getItem('FireAlarm'),
+      Candle: window.localStorage.getItem('Candle'),
+      Simulacrum: window.localStorage.getItem('Simulacrum'),
+      Extinguisher: window.localStorage.getItem('Extinguisher'),
+      Evacuation: window.localStorage.getItem('Evacuation'),
+      Food: window.localStorage.getItem('Food'),
+      Breaker: window.localStorage.getItem('Breaker'),
+    };
+    const baseUrl = "https://internal-explorer.netlify.com/result?res=";
+    let url = baseUrl;
+    url += (state.UnderfloorStorage)? "1" : "0";
+    url += (state.UnderfloorStorage)? "1" : "0";
+    url += (state.IndoorDryingPlace)? "1" : "0";
+    url += (state.FireAlarm)? "1" : "0";
+    url += (state.Candle)? "1" : "0";
+    url += (state.Simulacrum)? "1" : "0";
+    url += (state.Extinguisher)? "1" : "0";
+    url += (state.Evacuation)? "1" : "0";
+    url += (state.Food)? "1" : "0";
+    url += (state.Breaker)? "1" : "0";
+    setUrl(baseUrl);
+
+  },[]);
+
   return (
     <Layout>
       <SEO title="シェア" />
