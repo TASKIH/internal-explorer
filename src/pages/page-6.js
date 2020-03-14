@@ -13,13 +13,13 @@ const SixthPage = ({location}) => {
   return (
     <Layout>
       <SEO title="しゅみらくら　げんしょう" />
-      <h1>しゅみらくら　げんしょう</h1>
+      <h1>しみゅらくら　げんしょう</h1>
       <p>かべや　てんじょうにある　かおみたいに　みえるもようを　さがしてみよう！</p>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         <Image filename="220px-NEMA_5-15_Outlet_120V-15A.jpg" alt="コンセント"/>
       </div>
       <p>てんが　みっつ　あつまると　かおのように　みえるよね？</p>
-      <p>これは　しゅみらくら　げんしょう　っていうんだ！</p>
+      <p>これは　しみゅらくら　げんしょう　っていうんだ！</p>
       <p>おばけとかじゃないから　しんぱいしなくて　へいきだよ！</p>
       <p>└|∵|┐　┌|∵|┘ </p>
       <div className="inline-block">

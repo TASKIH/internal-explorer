@@ -70,7 +70,7 @@ const TenthPage = ({location}) => {
       <MaruBatsu isMaru={state.IndoorDryingPlace} text="しつない　ものほし"/>
       <MaruBatsu isMaru={state.FireAlarm} text="かさい　けいほう　き"/>
       <MaruBatsu isMaru={state.Candle} text="ろうそく"/>
-      <MaruBatsu isMaru={state.Simulacrum} text="しゅみらくら　げんしょう"/>
+      <MaruBatsu isMaru={state.Simulacrum} text="しみゅらくら　げんしょう"/>
       <MaruBatsu isMaru={state.Extinguisher} text="しょうかき"/>
       <MaruBatsu isMaru={state.Evacuation} text="ひなん　きぐ"/>
       <MaruBatsu isMaru={state.Food} text="ひじょうしょくとほぞんすい"/>

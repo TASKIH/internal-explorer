@@ -7,22 +7,6 @@ import Image from "../components/image"
 import TwitterShareButton from "react-share/es/TwitterShareButton"
 import TwitterIcon from "react-share/es/TwitterIcon"
 
-const MaruBatsu = ({isMaru, text}) => {
-  isMaru = JSON.parse(isMaru);
-  return (
-    <React.Fragment>
-      {isMaru && (
-        <React.Fragment>
-          <div style={{ maxWidth: `32px`, marginBottom: `0.25rem` }}><Image filename="62649.jpg" alt="花丸"/></div><p>{text}</p>
-        </React.Fragment>
-      )}
-      {!isMaru && (
-        <div><span className="NG">×</span><p>{text}</p></div>
-      )}
-    </React.Fragment>
-  );
-};
-
 const TenthPage = ({location}) => {
   const [url, setUrl] = useState("");
 
@@ -39,18 +23,18 @@ const TenthPage = ({location}) => {
       Breaker: window.localStorage.getItem('Breaker'),
     };
     const baseUrl = "https://internal-explorer.netlify.com/result?res=";
-    let url = baseUrl;
-    url += (state.UnderfloorStorage)? "1" : "0";
-    url += (state.UnderfloorStorage)? "1" : "0";
-    url += (state.IndoorDryingPlace)? "1" : "0";
-    url += (state.FireAlarm)? "1" : "0";
-    url += (state.Candle)? "1" : "0";
-    url += (state.Simulacrum)? "1" : "0";
-    url += (state.Extinguisher)? "1" : "0";
-    url += (state.Evacuation)? "1" : "0";
-    url += (state.Food)? "1" : "0";
-    url += (state.Breaker)? "1" : "0";
-    setUrl(baseUrl);
+    let tmpUrl = baseUrl;
+    tmpUrl += (state.UnderfloorStorage)? "1" : "0";
+    tmpUrl += (state.UnderfloorStorage)? "1" : "0";
+    tmpUrl += (state.IndoorDryingPlace)? "1" : "0";
+    tmpUrl += (state.FireAlarm)? "1" : "0";
+    tmpUrl += (state.Candle)? "1" : "0";
+    tmpUrl += (state.Simulacrum)? "1" : "0";
+    tmpUrl += (state.Extinguisher)? "1" : "0";
+    tmpUrl += (state.Evacuation)? "1" : "0";
+    tmpUrl += (state.Food)? "1" : "0";
+    tmpUrl += (state.Breaker)? "1" : "0";
+    setUrl(tmpUrl);
 
   },[]);
 
