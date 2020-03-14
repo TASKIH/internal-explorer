@@ -4,17 +4,21 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import FlareComponent from 'flare-react';
+import { withPrefix } from 'gatsby'
+
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <p>いつも　すごしているのに　じつは　しらない　じぶんの　いえ。</p>
+    <p>
+    あの　いだいな　たんけんか　 「マルコ・ポーロ」に　なったきぶんで　たんけんしてみよう！</p>
+    <p>どうせ　そとには　でられないんだから。</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+      <Image  filename="503453.jpg" alt="探検家"/>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Link to="/page-2/"><button>はじめよう！</button></Link>
   </Layout>
 )
 

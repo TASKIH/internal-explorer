@@ -7,10 +7,33 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, withPrefix } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import FlareComponent from "flare-react"
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+const GetAnimation = () => {
+  const val = getRandomInt(0, 6);
+  switch (val) {
+    case 0:
+      return "Star";
+    case 1:
+      return "shrink";
+    case 2:
+      return "rotate";
+    case 3:
+      return "shake";
+    case 4:
+      return "jump";
+  }
+  return "cry";
+};
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,9 +58,7 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <FlareComponent className="medjged" style={{position: `fixed`, bottom: 0, right: 0}} width={300} height={300} animationName={GetAnimation()} file={withPrefix('/medjed.flr')}/>
         </footer>
       </div>
     </>
