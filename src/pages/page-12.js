@@ -8,7 +8,7 @@ import TwitterShareButton from "react-share/es/TwitterShareButton"
 import TwitterIcon from "react-share/es/TwitterIcon"
 
 const TenthPage = ({location}) => {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(null);
 
   useEffect(() => {
     const state = {
@@ -24,18 +24,16 @@ const TenthPage = ({location}) => {
     };
     const baseUrl = "https://internal-explorer.netlify.com/result?res=";
     let tmpUrl = baseUrl;
-    tmpUrl += (state.UnderfloorStorage)? "1" : "0";
-    tmpUrl += (state.UnderfloorStorage)? "1" : "0";
-    tmpUrl += (state.IndoorDryingPlace)? "1" : "0";
-    tmpUrl += (state.FireAlarm)? "1" : "0";
-    tmpUrl += (state.Candle)? "1" : "0";
-    tmpUrl += (state.Simulacrum)? "1" : "0";
-    tmpUrl += (state.Extinguisher)? "1" : "0";
-    tmpUrl += (state.Evacuation)? "1" : "0";
-    tmpUrl += (state.Food)? "1" : "0";
-    tmpUrl += (state.Breaker)? "1" : "0";
+    tmpUrl += (JSON.parse(state.UnderfloorStorage))? "1" : "0";
+    tmpUrl += (JSON.parse(state.IndoorDryingPlace))? "1" : "0";
+    tmpUrl += (JSON.parse(state.FireAlarm))? "1" : "0";
+    tmpUrl += (JSON.parse(state.Candle))? "1" : "0";
+    tmpUrl += (JSON.parse(state.Simulacrum))? "1" : "0";
+    tmpUrl += (JSON.parse(state.Extinguisher))? "1" : "0";
+    tmpUrl += (JSON.parse(state.Evacuation))? "1" : "0";
+    tmpUrl += (JSON.parse(state.Food))? "1" : "0";
+    tmpUrl += (JSON.parse(state.Breaker))? "1" : "0";
     setUrl(tmpUrl);
-
   },[]);
 
   return (
@@ -49,9 +47,11 @@ const TenthPage = ({location}) => {
       <p>うまく　かけたら　おとなのひとに　しゃしんをとってもらって</p>
       <p>「ツイッターにのせておいて」っていってね！</p>
       <p>You can also share the result by clicking the button below.</p>
-      <TwitterShareButton title="たんけんのけっかだよ！ #web1week" url={url}>
-        <TwitterIcon size={32} round />
-      </TwitterShareButton>
+      {url && (
+        <TwitterShareButton title="たんけんのけっかだよ！ #web1week" url={url}>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+      )}
       <div>
         <Link to="/">はじめからやる！</Link>
       </div>

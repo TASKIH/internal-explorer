@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const TenthPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'Food', location.state.Food);
+    if (location.state.Food !== undefined) {
+      window.localStorage.setItem(
+        'Food', location.state.Food);
+    }
   },[])
   return (
     <Layout>

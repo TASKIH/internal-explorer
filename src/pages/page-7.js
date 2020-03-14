@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const SeventhPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'Simulacrum', location.state.Simulacrum);
+    if (location.state.Simulacrum !== undefined) {
+      window.localStorage.setItem(
+        'Simulacrum', location.state.Simulacrum);
+    }
   },[]);
   return (
     <Layout>

@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const SixthPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'Candle', location.state.Candle);
+    if (location.state.Candle !== undefined) {
+      window.localStorage.setItem(
+        'Candle', location.state.Candle);
+    }
   },[]);
   return (
     <Layout>

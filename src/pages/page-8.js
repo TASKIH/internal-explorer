@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const EighthPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'Extinguisher', location.state.Extinguisher);
+    if (location.state.Extinguisher !== undefined) {
+      window.localStorage.setItem(
+        'Extinguisher', location.state.Extinguisher);
+    }
   },[]);
   return (
     <Layout>

@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const ThirdPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'UnderfloorStorage', location.state.UnderfloorStorage);
+    if (location.state.UnderfloorStorage !== undefined) {
+      window.localStorage.setItem(
+        'UnderfloorStorage', location.state.UnderfloorStorage);
+    }
   },[])
 
   return (

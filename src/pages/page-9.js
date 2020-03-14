@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const NinthPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'Evacuation', location.state.Evacuation);
+    if (location.state.Evacuation !== undefined) {
+      window.localStorage.setItem(
+        'Evacuation', location.state.Evacuation);
+    }
   },[]);
   return (
     <Layout>

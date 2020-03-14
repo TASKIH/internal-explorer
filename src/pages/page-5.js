@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const FivePage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'FireAlarm', location.state.FireAlarm);
+    if (location.state.FireAlarm !== undefined) {
+      window.localStorage.setItem(
+        'FireAlarm', location.state.FireAlarm);
+    }
   },[])
   return (
     <Layout>

@@ -25,8 +25,10 @@ const TenthPage = ({location}) => {
   const [state, setState] = useState(null);
 
   useEffect(() => {
-    window.localStorage.setItem(
-      'Breaker', location.state.Breaker);
+    if (location.state.Breaker !== undefined) {
+      window.localStorage.setItem(
+        'Breaker', location.state.Breaker);
+    }
     const tmpState = {
       UnderfloorStorage: window.localStorage.getItem('UnderfloorStorage'),
       IndoorDryingPlace: window.localStorage.getItem('IndoorDryingPlace'),

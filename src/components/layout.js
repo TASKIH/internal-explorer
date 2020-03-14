@@ -9,32 +9,13 @@ import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql, withPrefix } from "gatsby"
 
+
 import Header from "./header"
 import "./layout.css"
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
-const GetAnimation = () => {
-  const val = getRandomInt(0, 6);
-  switch (val) {
-    case 0:
-      return "Star";
-    case 1:
-      return "shrink";
-    case 2:
-      return "rotate";
-    case 3:
-      return "shake";
-    case 4:
-      return "jump";
-  }
-  return "cry";
-};
+import Medged from "./medged"
 
 const Layout = ({ children }) => {
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -44,15 +25,7 @@ const Layout = ({ children }) => {
       }
     }
   `)
-  const [flare, setFlare] = useState(null);
 
-  useEffect(() => {
-    import("flare-react")
-      .then((flare) => {
-        setFlare(flare);
-      })
-      .catch((error) => console.error(error));
-  },[])
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
@@ -65,9 +38,7 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          {flare && (
-            <flare className="medjged" style={{position: `fixed`, bottom: 0, right: 0}} width={300} height={300} animationName={GetAnimation()} file={withPrefix('/medjed.flr')}/>
-          )}
+          <Medged/>
         </footer>
       </div>
     </>

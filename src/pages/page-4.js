@@ -7,8 +7,10 @@ import Image from "../components/image"
 
 const FourthPage = ({location}) => {
   useEffect(() => {
-    window.localStorage.setItem(
-      'IndoorDryingPlace', location.state.IndoorDryingPlace);
+    if (location.state.IndoorDryingPlace !== undefined) {
+      window.localStorage.setItem(
+        'IndoorDryingPlace', location.state.IndoorDryingPlace);
+    }
   },[])
 
   return (
