@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="たんけんぼくのいえ" description="じぶんのいえを　たんけんしてみよう！"/>
     <p>いつも　すごしているのに　じつは　しらない　じぶんの　いえ。</p>
     <p>
     あの　いだいな　たんけんか　 「マルコ・ポーロ」に　なったきぶんで　たんけんしてみよう！</p>
