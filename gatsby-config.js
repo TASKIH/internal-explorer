@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `たんけん ぼくの いえ`,
-    description: `自分の家を探検するためのWebアプリ`,
+    description: `じぶんのいえを　たんけんしてみよう！`,
     author: `@tRiaez1`,
   },
   plugins: [
